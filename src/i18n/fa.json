@@ -10,9 +10,9 @@
     "brand": "روبی لایت"
   },
   "hero": {
-    "brand": "جواهری روبی لایت",
-    "brandLines": ["جواهری", "روبی", "لایت"],
-    "tagline": ""
+    "brand": "جواهری",
+    "brandLines": [],
+    "tagline": "روبی لایت"
   },
   "contact": {
     "mobile": "موبایل",

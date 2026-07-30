@@ -27,25 +27,23 @@ export function Hero() {
         />
       </div>
 
-      {isFa ? (
-        <h1 id="hero-title" className="brand-fa">
-          {(t.hero.brandLines.length
-            ? t.hero.brandLines
-            : ['جواهری', 'روبی', 'لایت']
-          ).map((line) => (
-            <span key={line} className="brand-fa-line">
-              {line}
-            </span>
-          ))}
-        </h1>
-      ) : (
-        <>
-          <h1 id="hero-title" className="brand-en">
-            {t.hero.brand}
-          </h1>
-          <p className="brand-en-tag">{t.hero.tagline}</p>
-        </>
-      )}
+      <div className="brand-stack">
+        {isFa ? (
+          <>
+            <p className="brand-fa">{t.hero.brand}</p>
+            <h1 id="hero-title" className="brand-fa-tag">
+              {t.hero.tagline}
+            </h1>
+          </>
+        ) : (
+          <>
+            <h1 id="hero-title" className="brand-en">
+              {t.hero.brand}
+            </h1>
+            <p className="brand-en-tag">{t.hero.tagline}</p>
+          </>
+        )}
+      </div>
 
       <div className="hero-card">
         <address className="hero-meta">

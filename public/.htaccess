@@ -1,0 +1,20 @@
+# LiteSpeed / Apache — SPA + price proxy
+# Copy lands in dist/ via Vite publicDir
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Proxy gold prices to local PM2 service (127.0.0.1:3009)
+  RewriteRule ^api/tala$ http://127.0.0.1:3009/api/tala [P,L]
+
+  # Existing files/directories as-is
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # SPA fallback
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Optional: if [P] is unavailable, enable reverse proxy in LiteSpeed
+# Context / External App pointing /api/tala -> http://127.0.0.1:3009/api/tala
