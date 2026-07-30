@@ -1,0 +1,32 @@
+# public_html/.htaccess — LiteSpeed
+# Layout:
+#   public_html/
+#     .htaccess          (this file)
+#     rubylight/         (contents of Vite dist/)
+#     cgi-bin/
+#
+# PM2 must be running: rubylight-tala-proxy on 127.0.0.1:3009
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # --- Price API → PM2 proxy on port 3009 ---
+  RewriteRule ^api/tala/?$ http://127.0.0.1:3009/api/tala [P,L]
+
+  # --- Real files inside rubylight/ (js, css, images, …) ---
+  RewriteCond %{DOCUMENT_ROOT}/rubylight%{REQUEST_URI} -f
+  RewriteRule ^(.*)$ rubylight/$1 [L]
+
+  # --- Real directories inside rubylight/ ---
+  RewriteCond %{DOCUMENT_ROOT}/rubylight%{REQUEST_URI} -d
+  RewriteRule ^(.*)$ rubylight/$1 [L]
+
+  # --- SPA fallback ---
+  RewriteCond %{REQUEST_URI} !^/api/
+  RewriteRule ^ rubylight/index.html [L]
+</IfModule>
+
+# If [P] proxy returns 500/404, create in LiteSpeed WebAdmin:
+#   External App → http://127.0.0.1:3009
+#   Context /api/tala → that app (URI /api/tala)

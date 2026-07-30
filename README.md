@@ -49,8 +49,23 @@ pm2 startup
 
 پروکسی فقط روی `127.0.0.1:3009` گوش می‌دهد؛ نیازی به باز بودن پورت در فایروال عمومی نیست.
 
-### 3) LiteSpeed
+### 3) LiteSpeed (`public_html`)
 
-محتویات `dist/` را روی Document Root سایت کپی کنید. فایل `.htaccess` داخل `dist` مسیر `/api/tala` را به `http://127.0.0.1:3009/api/tala` پروکسی می‌کند و بقیه مسیرها را به `index.html` می‌فرستد.
+ساختار پیشنهادی روی سرور:
 
-اگر فلگ `[P]` در LiteSpeed فعال نبود، در LiteSpeed WebAdmin یک External App / Context برای `/api/tala` به `http://127.0.0.1:3009/api/tala` بسازید.
+```text
+public_html/
+  .htaccess          ← از deploy/public_html.htaccess کپی کنید
+  rubylight/         ← محتویات dist/ بعد از pnpm build
+```
+
+```bash
+cp deploy/public_html.htaccess /home/USER/public_html/.htaccess
+rm -rf /home/USER/public_html/rubylight/*
+cp -a dist/. /home/USER/public_html/rubylight/
+```
+
+`.htaccess` مسیر `/api/tala` را به `http://127.0.0.1:3009/api/tala` پروکسی می‌کند و بقیه درخواست‌ها را از پوشه `rubylight` (SPA) سرو می‌کند.
+
+اگر فلگ `[P]` کار نکرد، در LiteSpeed WebAdmin یک External App روی `http://127.0.0.1:3009` و Context برای `/api/tala` بسازید.
+
