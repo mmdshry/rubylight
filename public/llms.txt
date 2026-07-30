@@ -1,0 +1,28 @@
+# Ruby Light Jewelry
+
+> Fine jewelry store at Tehran Grand Bazaar (Khordad Passage).
+
+## Summary
+
+Ruby Light Jewelry (جواهر روبی لایت) is a jewelry shop in Tehran Grand Bazaar.
+
+## Contact
+
+- Mobile / WhatsApp: +989127217081
+- Shop phone: +982155582214
+- WhatsApp: https://wa.me/989127217081
+- Telegram: https://t.me/+989127217081
+
+## Address
+
+- EN: No. 2, Khordad Passage, The Great Market of Tehran, Iran
+- FA: بازار بزرگ تهران، روبروی ناصر خسرو، پاساژ خرداد، پلاک ۲
+
+## Links
+
+- [Home](https://rubylight.ir/)
+- [Persian](https://rubylight.ir/?lang=fa)
+- [English](https://rubylight.ir/?lang=en)
+- [WhatsApp](https://wa.me/989127217081)
+- [Telegram](https://t.me/+989127217081)
+- [Sitemap](https://rubylight.ir/sitemap.xml)

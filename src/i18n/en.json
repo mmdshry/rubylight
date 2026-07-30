@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "title": "Ruby Light Jewelry | Tehran Grand Bazaar",
+    "description": "Ruby Light Jewelry — Khordad Passage, Tehran Grand Bazaar. Call +98 912 721 7081",
+    "keywords": "Ruby Light, jewelry, Tehran, Grand Bazaar"
+  },
+  "nav": {
+    "lang": "FA",
+    "switchLang": "Switch to Persian",
+    "brand": "Ruby Light"
+  },
+  "hero": {
+    "brand": "RUBY LIGHT",
+    "brandLines": [],
+    "tagline": "JEWELRY"
+  },
+  "cta": {
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "saveContact": "Save Contact"
+  },
+  "footer": {
+    "rights": "Ruby Light Jewelry"
+  }
+}
