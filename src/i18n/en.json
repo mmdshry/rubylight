@@ -14,6 +14,40 @@
     "brandLines": [],
     "tagline": "JEWELRY"
   },
+  "contact": {
+    "mobile": "Mobile",
+    "landline": "Landline"
+  },
+  "prices": {
+    "title": "Gold Price Board",
+    "subtitle": "Live market rates",
+    "loading": "Loading prices…",
+    "error": "Prices unavailable right now",
+    "updated": "Updated",
+    "cached": "cached",
+    "source": "Source: tala.ir",
+    "items": {
+      "ounce": "Gold Ounce",
+      "bazartehran": "17 Mesghal",
+      "geram18": "18K /g",
+      "sekkejad": "Emami Coin",
+      "sekkenim": "Half Coin",
+      "sekkerob": "Quarter Coin",
+      "silver": "Silver (oz)",
+      "shemsh1": "Gram Bar",
+      "BTC_USDT": "Bitcoin",
+      "sekke-arzesh": "Coin Value",
+      "ENERGY_BRENT": "Brent Oil",
+      "USDT_IRT": "Tether",
+      "parsian1": "Parsian Coin",
+      "sekkegad": "Old Coin",
+      "geram740": "Buy Gold /g",
+      "try": "Turkish Lira",
+      "omr": "Omani Rial",
+      "ETH_USDT": "Ethereum",
+      "hobab": "Premium"
+    }
+  },
   "cta": {
     "whatsapp": "WhatsApp",
     "telegram": "Telegram",

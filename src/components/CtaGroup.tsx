@@ -44,27 +44,28 @@ export function CtaGroup() {
         href={CONTACT.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
-        className="cta-icon-btn cta-solid"
-        aria-label={t.cta.whatsapp}
+        className="cta-btn cta-solid"
       >
         <IconWhatsApp />
+        <span>{t.cta.whatsapp}</span>
       </a>
       <a
         href={CONTACT.telegram}
         target="_blank"
         rel="noopener noreferrer"
-        className="cta-icon-btn cta-ghost"
-        aria-label={`${t.cta.telegram} ${CONTACT.telegramHandle}`}
+        className="cta-btn cta-ghost"
+        title={CONTACT.telegramHandle}
       >
         <IconTelegram />
+        <span>{t.cta.telegram}</span>
       </a>
       <button
         type="button"
         onClick={() => void downloadVCard(locale)}
-        className="cta-icon-btn cta-ghost"
-        aria-label={t.cta.saveContact}
+        className="cta-btn cta-ghost"
       >
         <IconSaveContact />
+        <span>{t.cta.saveContact}</span>
       </button>
     </div>
   )

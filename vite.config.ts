@@ -3,6 +3,22 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
+const talaProxy = {
+  '/api/tala': {
+    target: 'https://www.tala.ir',
+    changeOrigin: true,
+    rewrite: () => '/banner',
+    headers: {
+      Accept: 'application/json, text/javascript, */*; q=0.01',
+      Referer: 'https://www.tala.ir/',
+      'X-Requested-With': 'XMLHttpRequest',
+      'User-Agent':
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36',
+      Cookie: '_trc=1',
+    },
+  },
+} as const
+
 export default defineConfig({
   resolve: {
     alias: {
@@ -11,6 +27,12 @@ export default defineConfig({
       'react-dom/client': 'preact/compat/client',
       'react/jsx-runtime': 'preact/jsx-runtime',
     },
+  },
+  server: {
+    proxy: { ...talaProxy },
+  },
+  preview: {
+    proxy: { ...talaProxy },
   },
   plugins: [
     react(),

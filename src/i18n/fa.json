@@ -14,6 +14,40 @@
     "brandLines": ["جواهری", "روبی", "لایت"],
     "tagline": ""
   },
+  "contact": {
+    "mobile": "موبایل",
+    "landline": "ثابت"
+  },
+  "prices": {
+    "title": "تابلو قیمت طلا",
+    "subtitle": "نرخ‌های لحظه‌ای بازار",
+    "loading": "در حال دریافت قیمت…",
+    "error": "فعلاً قیمت در دسترس نیست",
+    "updated": "به‌روزرسانی",
+    "cached": "آخرین ذخیره",
+    "source": "منبع: tala.ir",
+    "items": {
+      "ounce": "اونس طلا",
+      "bazartehran": "مثقال ۱۷",
+      "geram18": "گرم ۱۸",
+      "sekkejad": "سکه امامی",
+      "sekkenim": "سکه نیم",
+      "sekkerob": "سکه ربع",
+      "silver": "نقره(اونس)",
+      "shemsh1": "شمش گرمی",
+      "BTC_USDT": "بیت کوین",
+      "sekke-arzesh": "ارزش سکه",
+      "ENERGY_BRENT": "نفت",
+      "USDT_IRT": "تتر",
+      "parsian1": "سکه پارسیان",
+      "sekkegad": "سکه قدیم",
+      "geram740": "گرم خرید",
+      "try": "لیر ترکیه",
+      "omr": "ریال عمان",
+      "ETH_USDT": "اتریوم",
+      "hobab": "حباب"
+    }
+  },
   "cta": {
     "whatsapp": "واتس‌اپ",
     "telegram": "تلگرام",

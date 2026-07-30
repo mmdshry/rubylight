@@ -41,16 +41,6 @@
         background: #fff;
         color: #5c0a1a;
       }
-      #hero-logo-fallback {
-        position: fixed;
-        left: 50%;
-        top: calc(50% - 9.5rem);
-        transform: translateX(-50%);
-        width: clamp(7.5rem, 28vw, 11rem);
-        height: auto;
-        z-index: 1;
-        pointer-events: none;
-      }
     </style>
     <script>
       (function () {
@@ -83,18 +73,6 @@
     </script>
   </head>
   <body>
-    <img
-      id="hero-logo-fallback"
-      width="224"
-      height="224"
-      alt="جواهری روبی لایت"
-      fetchpriority="high"
-      decoding="sync"
-    />
-    <script>
-      document.getElementById('hero-logo-fallback').src =
-        window.__RUBY_LOGO__ || '/brand/logo-light-hero.webp'
-    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
