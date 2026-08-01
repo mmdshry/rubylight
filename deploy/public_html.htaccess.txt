@@ -1,0 +1,18 @@
+# Place at: public_html/.htaccess
+# Project: public_html/rubylight/  (full repo; PM2 serves dist/ + /api/tala)
+# App: Rubylight on http://127.0.0.1:3009
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # All traffic → PM2 Node app
+  # Needs LiteSpeed reverse-proxy / mod_proxy enabled
+  RewriteRule ^(.*)$ http://127.0.0.1:3009/$1 [P,L]
+</IfModule>
+
+# If [P] fails, in LiteSpeed WebAdmin:
+#   External App → http://127.0.0.1:3009
+#   Context / → that app

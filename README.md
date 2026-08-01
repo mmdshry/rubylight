@@ -7,7 +7,7 @@ SPA معرفی فروشگاه جواهر روبی‌لایت — دوزبانه 
 - Vite + React + TypeScript
 - Tailwind CSS v4
 - vite-plugin-pwa (کش آفلاین)
-- Node proxy برای قیمت طلا (`/api/tala`) + PM2
+- Node production server (`dist/` + `/api/tala`) روی PM2
 
 ## Commands
 
@@ -16,7 +16,8 @@ pnpm install
 pnpm run dev
 pnpm run build
 pnpm run preview
-pnpm run proxy   # پروکسی قیمت روی 127.0.0.1:3009
+pnpm start          # سرو dist + API قیمت روی 127.0.0.1:3009
+pnpm run proxy      # همان start
 ```
 
 ## Features
@@ -36,36 +37,34 @@ dnf install -y nodejs
 npm i -g pm2 pnpm
 ```
 
-### 2) Build و پروکسی قیمت
+### 2) Build و اجرای اپ روی پورت 3009
+
+پروژه در `/home/rubylight/public_html/rubylight` نصب است؛ دامنه به `public_html` اشاره می‌کند.
 
 ```bash
-cd /path/to/rubylight
+cd /home/rubylight/public_html/rubylight
 pnpm i --frozen-lockfile
 pnpm build
 pm2 start ecosystem.config.cjs
+# معادل: pm2 start pnpm --name Rubylight -- start
 pm2 save
 pm2 startup
 ```
 
-پروکسی فقط روی `127.0.0.1:3009` گوش می‌دهد؛ نیازی به باز بودن پورت در فایروال عمومی نیست.
+اپ روی `127.0.0.1:3009` گوش می‌دهد (فایل‌های `dist/` + `/api/tala`)؛ نیازی به باز بودن پورت در فایروال عمومی نیست.
 
 ### 3) LiteSpeed (`public_html`)
 
-ساختار پیشنهادی روی سرور:
-
 ```text
 public_html/
-  .htaccess          ← از deploy/public_html.htaccess کپی کنید
-  rubylight/         ← محتویات dist/ بعد از pnpm build
+  .htaccess          ← reverse proxy کامل به :3009
+  rubylight/         ← کل پروژه (سورس + dist + PM2)
 ```
 
 ```bash
-cp deploy/public_html.htaccess /home/USER/public_html/.htaccess
-rm -rf /home/USER/public_html/rubylight/*
-cp -a dist/. /home/USER/public_html/rubylight/
+cp deploy/public_html.htaccess /home/rubylight/public_html/.htaccess
 ```
 
-`.htaccess` مسیر `/api/tala` را به `http://127.0.0.1:3009/api/tala` پروکسی می‌کند و بقیه درخواست‌ها را از پوشه `rubylight` (SPA) سرو می‌کند.
+`.htaccess` همه درخواست‌ها را به `http://127.0.0.1:3009` پروکسی می‌کند.
 
-اگر فلگ `[P]` کار نکرد، در LiteSpeed WebAdmin یک External App روی `http://127.0.0.1:3009` و Context برای `/api/tala` بسازید.
-
+اگر فلگ `[P]` کار نکرد، در LiteSpeed WebAdmin یک External App روی `http://127.0.0.1:3009` و Context برای `/` بسازید.
