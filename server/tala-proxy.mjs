@@ -62,15 +62,27 @@ function contentType(filePath) {
   return MIME[path.extname(filePath).toLowerCase()] || 'application/octet-stream'
 }
 
+function cacheControl(filePath, type) {
+  const base = path.basename(filePath)
+  // SW + manifest must revalidate so PWA updates install
+  if (
+    type.startsWith('text/html') ||
+    base === 'sw.js' ||
+    base.startsWith('workbox-') ||
+    base.endsWith('.webmanifest')
+  ) {
+    return 'no-cache'
+  }
+  return 'public, max-age=31536000, immutable'
+}
+
 function sendFile(res, filePath, method) {
   const type = contentType(filePath)
   const stat = fs.statSync(filePath)
   res.writeHead(200, {
     'Content-Type': type,
     'Content-Length': stat.size,
-    'Cache-Control': type.startsWith('text/html')
-      ? 'no-cache'
-      : 'public, max-age=31536000, immutable',
+    'Cache-Control': cacheControl(filePath, type),
   })
   if (method === 'HEAD') {
     res.end()
