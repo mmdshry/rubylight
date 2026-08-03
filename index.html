@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fa" dir="rtl" data-theme="dark">
+<html lang="fa" dir="rtl" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -9,8 +9,8 @@
       content="جواهری روبی لایت — پاساژ خرداد، بازار بزرگ تهران. تماس ۰۹۱۲۷۲۱۷۰۸۱"
     />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="theme-color" content="#5C0A1A" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light" />
     <link rel="canonical" href="https://rubylight.ir/" />
     <link rel="alternate" hreflang="fa" href="https://rubylight.ir/?lang=fa" />
     <link rel="alternate" hreflang="en" href="https://rubylight.ir/?lang=en" />
@@ -33,11 +33,6 @@
         margin: 0;
         height: 100%;
         overflow: hidden;
-        background: #5c0a1a;
-        color: #fff;
-      }
-      html[data-theme='light'],
-      html[data-theme='light'] body {
         background: #fff;
         color: #5c0a1a;
       }
@@ -53,13 +48,10 @@
               : saved === 'en' || saved === 'fa'
                 ? saved
                 : 'fa'
-          var dark = lang !== 'en'
           document.documentElement.lang = lang
-          document.documentElement.dir = dark ? 'rtl' : 'ltr'
-          document.documentElement.dataset.theme = dark ? 'dark' : 'light'
-          var href = dark
-            ? '/brand/logo-light-hero.webp'
-            : '/brand/logo-hero.webp'
+          document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr'
+          document.documentElement.dataset.theme = 'light'
+          var href = '/brand/logo-hero.webp'
           var link = document.createElement('link')
           link.rel = 'preload'
           link.as = 'image'

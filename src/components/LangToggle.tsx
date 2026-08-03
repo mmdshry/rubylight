@@ -8,8 +8,8 @@ export function LangToggle() {
       type="button"
       onClick={toggleLocale}
       className="lang-toggle"
-      title={t.nav.switchLang}
-      aria-label={`${t.nav.lang} — ${t.nav.switchLang}`}
+      title="Switch language"
+      aria-label={`${t.nav.lang} — Switch language`}
     >
       {t.nav.lang}
     </button>

@@ -7,7 +7,9 @@
   "nav": {
     "lang": "FA",
     "switchLang": "Switch to Persian",
-    "brand": "Ruby Light"
+    "brand": "Ruby Light",
+    "fontSettings": "Choose font",
+    "fontMenu": "Persian body font"
   },
   "hero": {
     "brand": "RUBY LIGHT",
@@ -15,6 +17,8 @@
     "tagline": "JEWELRY"
   },
   "contact": {
+    "jewelryBranch": "Jewelry Branch",
+    "goldBranch": "Gold Branch",
     "mobile": "Mobile",
     "landline": "Landline"
   },

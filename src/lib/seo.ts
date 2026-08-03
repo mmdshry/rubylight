@@ -1,4 +1,4 @@
-import { CONTACT, type Locale } from './contacts'
+import { BRANCHES, CONTACT, type Locale } from './contacts'
 import en from '../i18n/en.json'
 import fa from '../i18n/fa.json'
 
@@ -40,7 +40,7 @@ export function applySeo(locale: Locale) {
   upsertMeta('name', 'keywords', meta.keywords)
   upsertMeta('name', 'robots', 'index, follow, max-image-preview:large')
   upsertMeta('name', 'author', CONTACT.brand[locale])
-  upsertMeta('name', 'theme-color', locale === 'fa' ? '#5C0A1A' : '#ffffff')
+  upsertMeta('name', 'theme-color', '#ffffff')
 
   upsertMeta('property', 'og:type', 'website')
   upsertMeta('property', 'og:site_name', CONTACT.brand[locale])
@@ -72,7 +72,12 @@ export function jewelryStoreJsonLd(locale: Locale) {
     url: CONTACT.siteUrl,
     image: `${CONTACT.siteUrl}/brand/og.png`,
     logo: `${CONTACT.siteUrl}/brand/logo.png`,
-    telephone: [CONTACT.phones.cell, CONTACT.phones.work],
+    telephone: [
+      CONTACT.phones.cell,
+      CONTACT.phones.work,
+      BRANCHES.gold.phones.cell,
+      BRANCHES.gold.phones.work,
+    ],
     address: {
       '@type': 'PostalAddress',
       streetAddress:

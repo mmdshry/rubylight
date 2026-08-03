@@ -1,24 +1,25 @@
-import { useI18n } from '../i18n/I18nContext'
+import en from '../i18n/en.json'
+import { FontToggle } from './FontToggle'
 import { LangToggle } from './LangToggle'
 
 export function Header() {
-  const { t, locale } = useI18n()
-  const isFa = locale === 'fa'
-
   return (
     <header className="site-header">
       <div className="site-header-inner">
         <a href="#main" className="site-brand">
           <img
-            src={isFa ? '/brand/logo-light-icon.webp' : '/brand/logo-icon.webp'}
+            src="/brand/logo-icon.webp"
             alt=""
-            width={36}
-            height={36}
+            width={56}
+            height={56}
             className="site-brand-logo"
           />
-          <span className="site-brand-name">{t.nav.brand}</span>
+          <span className="site-brand-name">{en.nav.brand}</span>
         </a>
-        <LangToggle />
+        <div className="site-header-actions">
+          <FontToggle />
+          <LangToggle />
+        </div>
       </div>
     </header>
   )

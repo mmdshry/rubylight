@@ -62,16 +62,16 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     const root = document.documentElement
     root.lang = locale
     root.dir = locale === 'fa' ? 'rtl' : 'ltr'
-    root.dataset.theme = locale === 'fa' ? 'dark' : 'light'
+    root.dataset.theme = 'light'
     applySeo(locale)
 
-    // Load locale fonts on switch
-    if (locale === 'en') {
-      void import('@fontsource/libre-baskerville/latin-400.css')
-      void import('@fontsource/libre-baskerville/latin-700.css')
-    } else {
+    // English chrome fonts always (header/footer stay EN-styled)
+    void import('@fontsource/libre-baskerville/latin-400.css')
+    void import('@fontsource/libre-baskerville/latin-700.css')
+
+    if (locale === 'fa') {
       void import('@fontsource/noto-nastaliq-urdu/arabic-400.css')
-      void import('@fontsource-variable/vazirmatn/wght.css')
+      // Body FA font is loaded by FontProvider from the selected family
     }
   }, [locale])
 

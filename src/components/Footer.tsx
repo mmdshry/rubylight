@@ -1,11 +1,9 @@
-import { useI18n } from '../i18n/I18nContext'
+import en from '../i18n/en.json'
 
 export function Footer() {
-  const { t } = useI18n()
-
   return (
     <footer className="site-footer">
-      <p className="site-footer-rights">{t.footer.rights}</p>
+      <p className="site-footer-rights">{en.footer.rights}</p>
     </footer>
   )
 }

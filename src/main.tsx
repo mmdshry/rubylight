@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles/index.css'
 import App from './App.tsx'
+import { applyFaFont, readStoredFaFont } from './lib/fonts'
 import { registerAgentTools } from './lib/webmcp'
 
 function initialLocale(): 'fa' | 'en' {
@@ -19,17 +20,19 @@ function initialLocale(): 'fa' | 'en' {
 async function boot() {
   const locale = initialLocale()
 
-  if (locale === 'en') {
-    await Promise.all([
-      import('@fontsource/libre-baskerville/latin-400.css'),
-      import('@fontsource/libre-baskerville/latin-700.css'),
-    ])
-  } else {
-    await Promise.all([
+  const tasks: Promise<unknown>[] = [
+    import('@fontsource/libre-baskerville/latin-400.css'),
+    import('@fontsource/libre-baskerville/latin-700.css'),
+  ]
+
+  if (locale === 'fa') {
+    tasks.push(
       import('@fontsource/noto-nastaliq-urdu/arabic-400.css'),
-      import('@fontsource-variable/vazirmatn/wght.css'),
-    ])
+      applyFaFont(readStoredFaFont()),
+    )
   }
+
+  await Promise.all(tasks)
 
   registerAgentTools()
   createRoot(document.getElementById('root')!).render(
