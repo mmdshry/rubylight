@@ -1,15 +1,16 @@
 # public_html/.htaccess — LiteSpeed
-# Layout A — web root is dist/ contents:
-#   public_html/
-#     .htaccess
-#     index.html, assets/, ...
-#
-# Layout B — repo stays in a subfolder:
+# Layout:
 #   public_html/
 #     .htaccess          (this file)
-#     rubylight/dist/    (Vite build output)
+#     rubylight/dist/    (Vite build — site is served from here)
 #
-# No PM2. Only /api/tala is proxied (to tala.ir).
+# Do NOT proxy / to 127.0.0.1:3009. That returns 503 when Node/PM2 is down.
+# Copy: cp deploy/public_html.htaccess /home/rubylight/public_html/.htaccess
+#
+# If LiteSpeed WebAdmin has Context / → External App :3009, delete that
+# Context or the homepage will keep returning 503.
+
+Options -Indexes
 
 <IfModule mod_headers.c>
   RequestHeader set Referer "https://www.tala.ir/" env=TALA
@@ -23,32 +24,22 @@
   RewriteEngine On
   RewriteBase /
 
-  # /api/tala → tala.ir (no Node / PM2)
+  # Already under /rubylight/dist — serve as-is
+  RewriteRule ^rubylight/dist(/|$) - [L]
+
+  # /api/tala → tala.ir (optional; site works even if this 503s)
   RewriteRule ^api/tala/?$ https://www.tala.ir/banner [P,L,E=TALA:1]
 
-  # Layout B: serve built files from rubylight/dist when present
-  RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/%{REQUEST_URI} -f
-  RewriteRule ^(.*)$ /rubylight/dist/$1 [L]
+  # Built asset in dist
+  RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/$1 -f
+  RewriteRule ^(.+)$ /rubylight/dist/$1 [L]
 
-  RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/%{REQUEST_URI} -d
-  RewriteRule ^(.*)$ /rubylight/dist/$1 [L]
-
-  # Layout A: existing files in the web root
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteRule ^ - [L]
-
-  # SPA fallback — prefer rubylight/dist, else web-root index.html
+  # SPA: homepage and client routes → dist/index.html
   RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/index.html -f
   RewriteRule ^ /rubylight/dist/index.html [L]
-
-  RewriteRule ^ index.html [L]
 </IfModule>
 
-# If [P] to HTTPS fails, in LiteSpeed WebAdmin:
+# If [P] to tala.ir fails, in LiteSpeed WebAdmin:
 #   External App → https://www.tala.ir
 #   Context /api/tala → that app, URI /banner
-#   Request headers: Referer https://www.tala.ir/
-#                    X-Requested-With XMLHttpRequest
-#                    Accept application/json, text/javascript, */*; q=0.01
-#                    Cookie _trc=1
+#   Do not point Context / at 127.0.0.1:3009

@@ -58,13 +58,15 @@ public_html/
   rubylight/dist/    ← خروجی Vite
 ```
 
-برای چیدمان B:
+برای چیدمان B این فایل را روی **ریشهٔ دامنه** بگذارید (نه داخل پوشهٔ پروژه). اگر این کپی انجام نشود و `.htaccess` قدیمی همه چیز را به `:3009` بفرستد، با خاموش بودن Node کل سایت 503 می‌شود.
 
 ```bash
-cp deploy/public_html.htaccess /home/rubylight/public_html/.htaccess
+cp /home/rubylight/public_html/rubylight/deploy/public_html.htaccess /home/rubylight/public_html/.htaccess
 ```
 
-`.htaccess` فایل‌های استاتیک را سرو می‌کند و `/api/tala` را با هدرهای لازم به tala.ir می‌فرستد.
+اگر قبلاً در LiteSpeed WebAdmin یک Context برای `/` به `127.0.0.1:3009` ساخته‌اید، آن را حذف کنید؛ وگرنه `.htaccess` نادیده گرفته می‌شود و دوباره 503 می‌گیرید.
+
+`.htaccess` فایل‌های استاتیک را از `rubylight/dist` سرو می‌کند و `/api/tala` را با هدرهای لازم به tala.ir می‌فرستد.
 
 اگر فلگ `[P]` به HTTPS خارجی کار نکرد، در LiteSpeed WebAdmin:
 

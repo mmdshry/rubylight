@@ -1,6 +1,5 @@
 # Place at: public_html/.htaccess
-# Static SPA + /api/tala → https://www.tala.ir/banner
-# Optional project path: public_html/rubylight/dist/
+# Static SPA from rubylight/dist/ — do not proxy / to :3009
 
 Options -Indexes
 
@@ -16,24 +15,12 @@ Options -Indexes
   RewriteEngine On
   RewriteBase /
 
+  RewriteRule ^rubylight/dist(/|$) - [L]
   RewriteRule ^api/tala/?$ https://www.tala.ir/banner [P,L,E=TALA:1]
 
-  RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/%{REQUEST_URI} -f
-  RewriteRule ^(.*)$ /rubylight/dist/$1 [L]
-
-  RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/%{REQUEST_URI} -d
-  RewriteRule ^(.*)$ /rubylight/dist/$1 [L]
-
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteRule ^ - [L]
+  RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/$1 -f
+  RewriteRule ^(.+)$ /rubylight/dist/$1 [L]
 
   RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/index.html -f
   RewriteRule ^ /rubylight/dist/index.html [L]
-
-  RewriteRule ^ index.html [L]
 </IfModule>
-
-# If [P] fails, in LiteSpeed WebAdmin:
-#   External App → https://www.tala.ir
-#   Context /api/tala → that app, URI /banner
