@@ -2,6 +2,8 @@
 # Copy lands in dist/ via Vite publicDir
 # Use when the web root is the contents of dist/
 
+AddType application/manifest+json .webmanifest
+
 <IfModule mod_headers.c>
   RequestHeader set Referer "https://www.tala.ir/" env=TALA
   RequestHeader set X-Requested-With "XMLHttpRequest" env=TALA

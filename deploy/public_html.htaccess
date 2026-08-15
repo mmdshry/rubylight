@@ -11,6 +11,7 @@
 # Context or the homepage will keep returning 503.
 
 Options -Indexes
+AddType application/manifest+json .webmanifest
 
 <IfModule mod_headers.c>
   RequestHeader set Referer "https://www.tala.ir/" env=TALA
