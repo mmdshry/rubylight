@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { registerSW } from 'virtual:pwa-register'
 import './styles/index.css'
 import App from './App.tsx'
 import { registerAgentTools } from './lib/webmcp'
@@ -37,10 +38,8 @@ async function boot() {
     </StrictMode>,
   )
 
-  if (import.meta.env.PROD && 'serviceWorker' in navigator) {
-    void navigator.serviceWorker.register('/sw.js').catch(() => {
-      /* optional */
-    })
+  if (import.meta.env.PROD) {
+    registerSW({ immediate: true })
   }
 }
 

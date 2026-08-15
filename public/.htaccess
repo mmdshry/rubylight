@@ -5,6 +5,9 @@
 AddType application/manifest+json .webmanifest
 
 <IfModule mod_headers.c>
+  <FilesMatch "(index\.html|sw\.js|workbox-.*\.js|manifest\.webmanifest)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
   RequestHeader set Referer "https://www.tala.ir/" env=TALA
   RequestHeader set X-Requested-With "XMLHttpRequest" env=TALA
   RequestHeader set Accept "application/json, text/javascript, */*; q=0.01" env=TALA
