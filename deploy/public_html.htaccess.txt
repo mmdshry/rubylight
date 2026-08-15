@@ -1,18 +1,39 @@
 # Place at: public_html/.htaccess
-# Project: public_html/rubylight/  (full repo; PM2 serves dist/ + /api/tala)
-# App: Rubylight on http://127.0.0.1:3009
+# Static SPA + /api/tala → https://www.tala.ir/banner
+# Optional project path: public_html/rubylight/dist/
 
 Options -Indexes
+
+<IfModule mod_headers.c>
+  RequestHeader set Referer "https://www.tala.ir/" env=TALA
+  RequestHeader set X-Requested-With "XMLHttpRequest" env=TALA
+  RequestHeader set Accept "application/json, text/javascript, */*; q=0.01" env=TALA
+  RequestHeader set Cookie "_trc=1" env=TALA
+  RequestHeader set User-Agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36" env=TALA
+</IfModule>
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # All traffic → PM2 Node app
-  # Needs LiteSpeed reverse-proxy / mod_proxy enabled
-  RewriteRule ^(.*)$ http://127.0.0.1:3009/$1 [P,L]
+  RewriteRule ^api/tala/?$ https://www.tala.ir/banner [P,L,E=TALA:1]
+
+  RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/%{REQUEST_URI} -f
+  RewriteRule ^(.*)$ /rubylight/dist/$1 [L]
+
+  RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/%{REQUEST_URI} -d
+  RewriteRule ^(.*)$ /rubylight/dist/$1 [L]
+
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/index.html -f
+  RewriteRule ^ /rubylight/dist/index.html [L]
+
+  RewriteRule ^ index.html [L]
 </IfModule>
 
 # If [P] fails, in LiteSpeed WebAdmin:
-#   External App → http://127.0.0.1:3009
-#   Context / → that app
+#   External App → https://www.tala.ir
+#   Context /api/tala → that app, URI /banner

@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@fontsource-variable/vazirmatn':
-        specifier: ^5.3.0
-        version: 5.3.0
       '@fontsource/cinzel':
         specifier: ^5.3.0
         version: 5.3.0
@@ -21,12 +18,6 @@ importers:
         specifier: ^5.3.0
         version: 5.3.0
       '@fontsource/libre-baskerville':
-        specifier: ^5.3.0
-        version: 5.3.0
-      '@fontsource/noto-naskh-arabic':
-        specifier: ^5.3.0
-        version: 5.3.0
-      '@fontsource/noto-nastaliq-urdu':
         specifier: ^5.3.0
         version: 5.3.0
       '@fontsource/playfair-display':
@@ -591,9 +582,6 @@ packages:
   '@emnapi/wasi-threads@1.2.2':
     resolution: {integrity: sha512-c95qOXkHdydNKhscBTebqEC1CVAZpyqOfVfBzQ1qgzyl3gfeldUjIggDbIZgDKsHLgnsM+igH7TJ/eAasaVuMA==}
 
-  '@fontsource-variable/vazirmatn@5.3.0':
-    resolution: {integrity: sha512-ZA68W8JHbMdNzzwjYHUWKB2PH22QpxNEnk0ukcXM+XiqYMV6ZWJZAKuNXcrMR2JjuIAwsfAU3KknCXPI6wXUvw==}
-
   '@fontsource/cinzel@5.3.0':
     resolution: {integrity: sha512-KEOYTsrRppW0uRIPWBDPrQgunCS6f8u4nzZxYRBfo9SCknKojLYjK7B0ZoVmJhyVLefz271ZQRF9EOpHZlfhRw==}
 
@@ -605,12 +593,6 @@ packages:
 
   '@fontsource/libre-baskerville@5.3.0':
     resolution: {integrity: sha512-IA6OLq36/JWMX70Fha15sri2qWsijFh7hgdDXCRZHjKUHtWarLQoiGilvm7iMqm7HiYFEv9acF3+IuRHO9kUiA==}
-
-  '@fontsource/noto-naskh-arabic@5.3.0':
-    resolution: {integrity: sha512-S/GDgQ6mh/PKo4mz5+eXNYbEarvpI7yh6eCdOz8tTVbeM7+OUiacIEscaYEibr/+egDtGbO2ZB00sjy1bJC1kQ==}
-
-  '@fontsource/noto-nastaliq-urdu@5.3.0':
-    resolution: {integrity: sha512-rhozTu22mlnDp5R8A4gGeNJvoLroHEV0TytCwly20w1LMA+VXs/MyhORGJu3i3SWZFdyeCFe5EF5xzraq6zd6A==}
 
   '@fontsource/playfair-display@5.3.0':
     resolution: {integrity: sha512-uJSABalvdWc10fEPppQjQocamT21LEyRfzzWfRfqbkPz+sRv+kKpYDKyluBUskvJREkJTos9epj1WjQROGu99Q==}
@@ -3007,8 +2989,6 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@fontsource-variable/vazirmatn@5.3.0': {}
-
   '@fontsource/cinzel@5.3.0': {}
 
   '@fontsource/cormorant-garamond@5.3.0': {}
@@ -3016,10 +2996,6 @@ snapshots:
   '@fontsource/eb-garamond@5.3.0': {}
 
   '@fontsource/libre-baskerville@5.3.0': {}
-
-  '@fontsource/noto-naskh-arabic@5.3.0': {}
-
-  '@fontsource/noto-nastaliq-urdu@5.3.0': {}
 
   '@fontsource/playfair-display@5.3.0': {}
 

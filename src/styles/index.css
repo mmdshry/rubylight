@@ -4,8 +4,8 @@
   --color-burgundy: #5c0a1a;
   --font-display-en: 'Libre Baskerville', serif;
   --font-body-en: 'Libre Baskerville', serif;
-  --font-display-fa: 'Noto Nastaliq Urdu', serif;
-  --font-body-fa: 'Vazirmatn Variable', 'Vazirmatn', sans-serif;
+  --font-display-fa: 'Sahel', sans-serif;
+  --font-body-fa: 'Sahel', sans-serif;
 }
 
 :root,
@@ -169,8 +169,7 @@ button {
   gap: 0.45rem;
 }
 
-.lang-toggle,
-.font-toggle-btn {
+.lang-toggle {
   flex-shrink: 0;
   min-width: 2.75rem;
   min-height: 2.75rem;
@@ -181,55 +180,6 @@ button {
   font-weight: 600;
   letter-spacing: 0.1em;
   background: color-mix(in srgb, var(--bg) 70%, transparent);
-}
-
-.font-toggle {
-  position: relative;
-}
-
-.font-toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  width: 2.75rem;
-}
-
-.font-toggle-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  display: block;
-}
-
-.font-menu {
-  position: absolute;
-  top: calc(100% + 0.4rem);
-  right: 0;
-  z-index: 40;
-  min-width: 11.5rem;
-  margin: 0;
-  padding: 0.35rem;
-  list-style: none;
-  border: 1px solid var(--line);
-  border-radius: 0.75rem;
-  background: var(--bg);
-  box-shadow: 0 10px 28px color-mix(in srgb, var(--fg) 12%, transparent);
-}
-
-.font-menu-item {
-  display: block;
-  width: 100%;
-  padding: 0.55rem 0.7rem;
-  border-radius: 0.5rem;
-  text-align: start;
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--fg);
-}
-
-.font-menu-item[aria-current='true'],
-.font-menu-item:hover {
-  background: color-mix(in srgb, var(--fg) 8%, transparent);
 }
 
 .site-footer {
@@ -295,24 +245,6 @@ button {
   margin-top: 0.35rem;
   padding-bottom: 0.35rem;
   text-align: center;
-}
-
-.brand-fa {
-  margin: 0;
-  font-family: var(--font-display-fa);
-  font-size: clamp(1.05rem, 3.2vw, 1.35rem);
-  font-weight: 400;
-  line-height: 1.35;
-  color: var(--muted);
-}
-
-.brand-fa-tag {
-  margin: 0.4rem 0 0;
-  font-family: var(--font-display-fa);
-  font-size: clamp(2rem, 6.5vw, 3.1rem);
-  font-weight: 400;
-  line-height: 1.4;
-  color: var(--fg);
 }
 
 .brand-en {
@@ -599,14 +531,6 @@ html[lang='fa'] .price-board-value {
 
   .brand-stack {
     min-height: 5.25rem;
-  }
-
-  .brand-fa {
-    font-size: clamp(0.95rem, 3vw, 1.15rem);
-  }
-
-  .brand-fa-tag {
-    font-size: clamp(1.7rem, 5.5vw, 2.4rem);
   }
 
   .brand-en {

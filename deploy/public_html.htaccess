@@ -1,21 +1,54 @@
 # public_html/.htaccess — LiteSpeed
-# Layout:
+# Layout A — web root is dist/ contents:
 #   public_html/
-#     .htaccess          (this file — reverse proxy to PM2)
-#     rubylight/         (full project; PM2 runs from here)
+#     .htaccess
+#     index.html, assets/, ...
 #
-# PM2 must be running: Rubylight on 127.0.0.1:3009
-#   cd /home/rubylight/public_html/rubylight
-#   pm2 start ecosystem.config.cjs
+# Layout B — repo stays in a subfolder:
+#   public_html/
+#     .htaccess          (this file)
+#     rubylight/dist/    (Vite build output)
+#
+# No PM2. Only /api/tala is proxied (to tala.ir).
+
+<IfModule mod_headers.c>
+  RequestHeader set Referer "https://www.tala.ir/" env=TALA
+  RequestHeader set X-Requested-With "XMLHttpRequest" env=TALA
+  RequestHeader set Accept "application/json, text/javascript, */*; q=0.01" env=TALA
+  RequestHeader set Cookie "_trc=1" env=TALA
+  RequestHeader set User-Agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36" env=TALA
+</IfModule>
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # Proxy all traffic to the Node app on port 3009
-  RewriteRule ^(.*)$ http://127.0.0.1:3009/$1 [P,L]
+  # /api/tala → tala.ir (no Node / PM2)
+  RewriteRule ^api/tala/?$ https://www.tala.ir/banner [P,L,E=TALA:1]
+
+  # Layout B: serve built files from rubylight/dist when present
+  RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/%{REQUEST_URI} -f
+  RewriteRule ^(.*)$ /rubylight/dist/$1 [L]
+
+  RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/%{REQUEST_URI} -d
+  RewriteRule ^(.*)$ /rubylight/dist/$1 [L]
+
+  # Layout A: existing files in the web root
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # SPA fallback — prefer rubylight/dist, else web-root index.html
+  RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/index.html -f
+  RewriteRule ^ /rubylight/dist/index.html [L]
+
+  RewriteRule ^ index.html [L]
 </IfModule>
 
-# If [P] proxy returns 500/404, create in LiteSpeed WebAdmin:
-#   External App → http://127.0.0.1:3009
-#   Context / → that app (URI /)
+# If [P] to HTTPS fails, in LiteSpeed WebAdmin:
+#   External App → https://www.tala.ir
+#   Context /api/tala → that app, URI /banner
+#   Request headers: Referer https://www.tala.ir/
+#                    X-Requested-With XMLHttpRequest
+#                    Accept application/json, text/javascript, */*; q=0.01
+#                    Cookie _trc=1

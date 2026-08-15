@@ -2,7 +2,6 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles/index.css'
 import App from './App.tsx'
-import { applyFaFont, readStoredFaFont } from './lib/fonts'
 import { registerAgentTools } from './lib/webmcp'
 
 function initialLocale(): 'fa' | 'en' {
@@ -26,10 +25,7 @@ async function boot() {
   ]
 
   if (locale === 'fa') {
-    tasks.push(
-      import('@fontsource/noto-nastaliq-urdu/arabic-400.css'),
-      applyFaFont(readStoredFaFont()),
-    )
+    tasks.push(import('./styles/fa-fonts.css'))
   }
 
   await Promise.all(tasks)
@@ -41,12 +37,11 @@ async function boot() {
     </StrictMode>,
   )
 
-  window.setTimeout(() => {
-    if (!('serviceWorker' in navigator)) return
+  if (import.meta.env.PROD && 'serviceWorker' in navigator) {
     void navigator.serviceWorker.register('/sw.js').catch(() => {
       /* optional */
     })
-  }, 4000)
+  }
 }
 
 void boot()

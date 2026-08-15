@@ -70,8 +70,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     void import('@fontsource/libre-baskerville/latin-700.css')
 
     if (locale === 'fa') {
-      void import('@fontsource/noto-nastaliq-urdu/arabic-400.css')
-      // Body FA font is loaded by FontProvider from the selected family
+      void import('../styles/fa-fonts.css')
     }
   }, [locale])
 

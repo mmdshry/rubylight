@@ -1,11 +1,20 @@
-# LiteSpeed / Apache — SPA + price proxy
+# LiteSpeed / Apache — SPA + gold-price proxy
 # Copy lands in dist/ via Vite publicDir
+# Use when the web root is the contents of dist/
+
+<IfModule mod_headers.c>
+  RequestHeader set Referer "https://www.tala.ir/" env=TALA
+  RequestHeader set X-Requested-With "XMLHttpRequest" env=TALA
+  RequestHeader set Accept "application/json, text/javascript, */*; q=0.01" env=TALA
+  RequestHeader set Cookie "_trc=1" env=TALA
+  RequestHeader set User-Agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36" env=TALA
+</IfModule>
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Proxy gold prices to local PM2 service (127.0.0.1:3009)
-  RewriteRule ^api/tala$ http://127.0.0.1:3009/api/tala [P,L]
+  # /api/tala → tala.ir (no Node / PM2)
+  RewriteRule ^api/tala/?$ https://www.tala.ir/banner [P,L,E=TALA:1]
 
   # Existing files/directories as-is
   RewriteCond %{REQUEST_FILENAME} -f [OR]
@@ -16,5 +25,10 @@
   RewriteRule ^ index.html [L]
 </IfModule>
 
-# Optional: if [P] is unavailable, enable reverse proxy in LiteSpeed
-# Context / External App pointing /api/tala -> http://127.0.0.1:3009/api/tala
+# If [P] to HTTPS fails, in LiteSpeed WebAdmin:
+#   External App → https://www.tala.ir
+#   Context /api/tala → that app, URI /banner
+#   Request headers: Referer https://www.tala.ir/
+#                    X-Requested-With XMLHttpRequest
+#                    Accept application/json, text/javascript, */*; q=0.01
+#                    Cookie _trc=1

@@ -1,10 +1,10 @@
 import { BRANCHES, telHref } from '../lib/contacts'
+import en from '../i18n/en.json'
 import { useI18n } from '../i18n/I18nContext'
 import { CtaGroup } from './CtaGroup'
 
 export function Hero() {
   const { t, locale } = useI18n()
-  const isFa = locale === 'fa'
   const logoAlt =
     locale === 'fa'
       ? 'لوگوی جواهری روبی لایت'
@@ -30,21 +30,10 @@ export function Hero() {
       </div>
 
       <div className="brand-stack">
-        {isFa ? (
-          <>
-            <p className="brand-fa">{t.hero.brand}</p>
-            <h1 id="hero-title" className="brand-fa-tag">
-              {t.hero.tagline}
-            </h1>
-          </>
-        ) : (
-          <>
-            <h1 id="hero-title" className="brand-en">
-              {t.hero.brand}
-            </h1>
-            <p className="brand-en-tag">{t.hero.tagline}</p>
-          </>
-        )}
+        <h1 id="hero-title" className="brand-en">
+          {en.hero.brand}
+        </h1>
+        <p className="brand-en-tag">{en.hero.tagline}</p>
       </div>
 
       <div className="hero-card">

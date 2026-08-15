@@ -7,9 +7,7 @@
   "nav": {
     "lang": "EN",
     "switchLang": "تغییر به انگلیسی",
-    "brand": "روبی لایت",
-    "fontSettings": "انتخاب فونت",
-    "fontMenu": "فونت متن فارسی"
+    "brand": "روبی لایت"
   },
   "hero": {
     "brand": "جواهری",
@@ -17,7 +15,7 @@
     "tagline": "روبی لایت"
   },
   "contact": {
-    "jewelryBranch": "شعبه جواهری",
+    "jewelryBranch": "شعبه جواهر",
     "goldBranch": "شعبه طلا",
     "mobile": "موبایل",
     "landline": "ثابت"

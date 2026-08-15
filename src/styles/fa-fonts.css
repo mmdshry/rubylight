@@ -1,60 +1,4 @@
 @font-face {
-  font-family: 'Vazir';
-  src: url('/fonts/vazir/Vazir-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Vazir';
-  src: url('/fonts/vazir/Vazir-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Vazir';
-  src: url('/fonts/vazir/Vazir-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Shabnam';
-  src: url('/fonts/shabnam/Shabnam-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Shabnam';
-  src: url('/fonts/shabnam/Shabnam-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Samim';
-  src: url('/fonts/samim/Samim-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Samim';
-  src: url('/fonts/samim/Samim-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'Sahel';
   src: url('/fonts/sahel/Sahel-Regular.woff2') format('woff2');
   font-weight: 400;
@@ -65,38 +9,6 @@
 @font-face {
   font-family: 'Sahel';
   src: url('/fonts/sahel/Sahel-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Tanha';
-  src: url('/fonts/tanha/Tanha-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Tanha';
-  src: url('/fonts/tanha/Tanha-Regular.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Parastoo';
-  src: url('/fonts/parastoo/Parastoo-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Parastoo';
-  src: url('/fonts/parastoo/Parastoo-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
