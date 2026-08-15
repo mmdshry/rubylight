@@ -16,7 +16,7 @@ Options -Indexes
   RewriteBase /
 
   RewriteRule ^rubylight/dist(/|$) - [L]
-  RewriteRule ^api/tala/?$ https://www.tala.ir/banner [P,L,E=TALA:1]
+  RewriteRule ^api/tala/?$ http://127.0.0.1:3009/api/tala [P,L]
 
   RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/$1 -f
   RewriteRule ^(.+)$ /rubylight/dist/$1 [L]

@@ -13,8 +13,8 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # /api/tala → tala.ir (no Node / PM2)
-  RewriteRule ^api/tala/?$ https://www.tala.ir/banner [P,L,E=TALA:1]
+  # /api/tala → local Node proxy (optional PM2 on :3009)
+  RewriteRule ^api/tala/?$ http://127.0.0.1:3009/api/tala [P,L]
 
   # Existing files/directories as-is
   RewriteCond %{REQUEST_FILENAME} -f [OR]

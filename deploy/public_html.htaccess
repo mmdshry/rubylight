@@ -27,8 +27,8 @@ Options -Indexes
   # Already under /rubylight/dist — serve as-is
   RewriteRule ^rubylight/dist(/|$) - [L]
 
-  # /api/tala → tala.ir (optional; site works even if this 503s)
-  RewriteRule ^api/tala/?$ https://www.tala.ir/banner [P,L,E=TALA:1]
+  # /api/tala → local Node proxy (PM2 on :3009). Site stays up if this fails.
+  RewriteRule ^api/tala/?$ http://127.0.0.1:3009/api/tala [P,L]
 
   # Built asset in dist
   RewriteCond %{DOCUMENT_ROOT}/rubylight/dist/$1 -f
