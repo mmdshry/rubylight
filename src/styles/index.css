@@ -182,29 +182,6 @@ button {
   background: color-mix(in srgb, var(--bg) 70%, transparent);
 }
 
-.install-toggle {
-  position: relative;
-}
-
-.install-ios-hint {
-  position: absolute;
-  top: calc(100% + 0.4rem);
-  right: 0;
-  z-index: 40;
-  width: min(16.5rem, 70vw);
-  margin: 0;
-  padding: 0.7rem 0.8rem;
-  border: 1px solid var(--line);
-  border-radius: 0.75rem;
-  background: var(--bg);
-  box-shadow: 0 10px 28px color-mix(in srgb, var(--fg) 12%, transparent);
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: 1.45;
-  text-align: start;
-}
-
 .site-footer {
   flex-shrink: 0;
   z-index: 20;

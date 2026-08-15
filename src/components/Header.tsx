@@ -1,5 +1,4 @@
 import en from '../i18n/en.json'
-import { InstallButton } from './InstallButton'
 import { LangToggle } from './LangToggle'
 
 export function Header() {
@@ -17,7 +16,6 @@ export function Header() {
           <span className="site-brand-name">{en.nav.brand}</span>
         </a>
         <div className="site-header-actions">
-          <InstallButton />
           <LangToggle />
         </div>
       </div>
