@@ -38,10 +38,30 @@
         background: #fff;
         color: #5c0a1a;
       }
+      html[data-tv='1'],
+      html[data-tv='1'] body,
+      html[data-tv='1'] #root {
+        height: 100%;
+        background: #ffffff;
+        color: #5c0a1a;
+      }
     </style>
     <script>
       (function () {
         try {
+          var path = (location.pathname || '').replace(/\/+$/, '')
+          var isTv = path === '/tv'
+          var root = document.documentElement
+          if (isTv) {
+            root.lang = 'fa'
+            root.dir = 'rtl'
+            root.setAttribute('data-tv', '1')
+            root.setAttribute('data-theme', 'light')
+            document.title = 'تابلو قیمت طلا | روبی لایت'
+            var robots = document.querySelector('meta[name="robots"]')
+            if (robots) robots.setAttribute('content', 'noindex, nofollow')
+            return
+          }
           var q = new URLSearchParams(location.search).get('lang')
           var saved = localStorage.getItem('ruby-light-locale')
           var lang =
@@ -50,9 +70,9 @@
               : saved === 'en' || saved === 'fa'
                 ? saved
                 : 'fa'
-          document.documentElement.lang = lang
-          document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr'
-          document.documentElement.dataset.theme = 'light'
+          root.lang = lang
+          root.dir = lang === 'fa' ? 'rtl' : 'ltr'
+          root.dataset.theme = 'light'
           var href = '/brand/logo-hero.webp'
           var link = document.createElement('link')
           link.rel = 'preload'

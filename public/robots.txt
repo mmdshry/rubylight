@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /tv
+Disallow: /tv/
 
 Sitemap: https://rubylight.ir/sitemap.xml

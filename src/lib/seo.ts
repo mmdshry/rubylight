@@ -1,6 +1,7 @@
 import { BRANCHES, CONTACT, type Locale } from './contacts'
 import en from '../i18n/en.json'
 import fa from '../i18n/fa.json'
+import { isTvPath } from './tv'
 
 const dict = { fa, en }
 
@@ -34,6 +35,17 @@ export function applySeo(locale: Locale) {
   const meta = dict[locale].meta
   const url = CONTACT.siteUrl
   const ogImage = `${url}/brand/og.png`
+  const tv = isTvPath()
+
+  if (tv) {
+    document.title = `${fa.prices.title} | ${fa.nav.brand}`
+    upsertMeta('name', 'description', fa.prices.subtitle)
+    upsertMeta('name', 'robots', 'noindex, nofollow')
+    upsertMeta('name', 'theme-color', '#ffffff')
+    upsertMeta('name', 'color-scheme', 'light')
+    upsertLink('canonical', `${url}/tv`)
+    return
+  }
 
   document.title = meta.title
   upsertMeta('name', 'description', meta.description)

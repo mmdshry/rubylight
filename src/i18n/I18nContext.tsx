@@ -11,6 +11,7 @@ import en from './en.json'
 import fa from './fa.json'
 import type { Locale } from '../lib/contacts'
 import { applySeo } from '../lib/seo'
+import { isTvPath } from '../lib/tv'
 
 type Messages = typeof fa
 
@@ -27,6 +28,7 @@ const I18nContext = createContext<I18nContextValue | null>(null)
 const STORAGE_KEY = 'ruby-light-locale'
 
 function readLocale(): Locale {
+  if (isTvPath()) return 'fa'
   try {
     const params = new URLSearchParams(window.location.search)
     const q = params.get('lang')
@@ -60,10 +62,14 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const root = document.documentElement
+    const tv = isTvPath()
     root.lang = locale
     root.dir = locale === 'fa' ? 'rtl' : 'ltr'
     root.dataset.theme = 'light'
+    if (tv) root.dataset.tv = '1'
     applySeo(locale)
+
+    if (tv) return
 
     // English chrome fonts always (header/footer stay EN-styled)
     void import('@fontsource/libre-baskerville/latin-400.css')

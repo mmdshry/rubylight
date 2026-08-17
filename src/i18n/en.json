@@ -28,6 +28,11 @@
     "updated": "Updated",
     "cached": "cached",
     "source": "Source: tala.ir",
+    "min": "Min",
+    "max": "Max",
+    "up": "Up",
+    "down": "Down",
+    "flat": "Unchanged",
     "items": {
       "ounce": "Gold Ounce",
       "bazartehran": "17 Mesghal",

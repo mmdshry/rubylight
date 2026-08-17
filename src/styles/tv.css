@@ -1,0 +1,198 @@
+/* Isolated TV board — light site theme, no color-mix/dvh/clamp/gap/CSS variables. */
+
+@font-face {
+  font-family: 'Sahel';
+  src: url('/fonts/sahel/Sahel-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sahel';
+  src: url('/fonts/sahel/Sahel-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+html[data-tv='1'],
+html[data-tv='1'] body,
+html[data-tv='1'] #root {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #ffffff;
+  color: #5c0a1a;
+  font-family: Sahel, Tahoma, Arial, sans-serif;
+}
+
+html[data-tv='1'] .tv-shell {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background: #ffffff;
+  color: #5c0a1a;
+}
+
+html[data-tv='1'] .tv-header-row {
+  height: 8%;
+}
+
+html[data-tv='1'] .tv-board-head-row {
+  height: 8%;
+}
+
+html[data-tv='1'] .tv-price-row {
+  height: 18%;
+}
+
+html[data-tv='1'] .tv-board-foot-row {
+  height: 5%;
+}
+
+html[data-tv='1'] .tv-footer-row {
+  height: 5%;
+}
+
+html[data-tv='1'] .tv-header-row td {
+  padding: 0 2vh;
+  border-bottom: 1px solid #e2d3d6;
+  background: #ffffff;
+  vertical-align: middle;
+  direction: ltr;
+  text-align: left;
+  overflow: hidden;
+}
+
+html[data-tv='1'] .tv-logo {
+  width: 5vh;
+  height: 5vh;
+  vertical-align: middle;
+  margin-right: 1vh;
+  border: 0;
+}
+
+html[data-tv='1'] .tv-brand-name {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 2.2vh;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #5c0a1a;
+  vertical-align: middle;
+}
+
+html[data-tv='1'] .tv-board-head-row td {
+  padding: 0.4vh 1vh;
+  text-align: center;
+  vertical-align: middle;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+html[data-tv='1'] .tv-title {
+  display: block;
+  font-family: Sahel, Tahoma, Arial, sans-serif;
+  font-size: 2.8vh;
+  font-weight: 400;
+  line-height: 1.15;
+  color: #5c0a1a;
+  margin: 0 0 0.3vh 0;
+}
+
+html[data-tv='1'] .tv-sub {
+  display: block;
+  font-size: 1.8vh;
+  line-height: 1.15;
+  color: #6e3140;
+  margin: 0;
+}
+
+html[data-tv='1'] .tv-cell {
+  width: 33.33%;
+  padding: 0.6vh 0.8vh;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #e2d3d6;
+  background: #ffffff;
+  color: #5c0a1a;
+  overflow: hidden;
+  line-height: 1.15;
+}
+
+html[data-tv='1'] .tv-label {
+  display: inline-block;
+  padding: 0.25vh 1vh;
+  margin: 0 0 0.5vh 0;
+  background: #5c0a1a;
+  color: #ffffff;
+  font-size: 2.6vh;
+  line-height: 1.15;
+}
+
+html[data-tv='1'] .tv-value {
+  display: block;
+  font-family: Sahel, Tahoma, Arial, sans-serif;
+  font-size: 4.2vh;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #5c0a1a;
+  direction: ltr;
+}
+
+html[data-tv='1'] .tv-dir {
+  font-size: 0.75em;
+  font-weight: 700;
+}
+
+html[data-tv='1'] .tv-dir-up {
+  color: #1a7f37;
+}
+
+html[data-tv='1'] .tv-dir-down {
+  color: #c41e3a;
+}
+
+html[data-tv='1'] .tv-dir-flat {
+  color: #5c0a1a;
+}
+
+html[data-tv='1'] .tv-range {
+  display: block;
+  margin-top: 0.4vh;
+  font-size: 1.8vh;
+  line-height: 1.15;
+  color: #6e3140;
+}
+
+html[data-tv='1'] .tv-board-foot-row td {
+  padding: 0 1vh;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 2vh;
+  line-height: 1.15;
+  color: #6e3140;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+html[data-tv='1'] .tv-footer-row td {
+  padding: 0 1vh;
+  border-top: 1px solid #e2d3d6;
+  text-align: center;
+  vertical-align: middle;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+html[data-tv='1'] .tv-footer-rights {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1.5vh;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #6e3140;
+}

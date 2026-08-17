@@ -136,17 +136,36 @@ async function handleTala(req, res) {
       cache: 'no-store',
     })
     const text = await upstream.text()
-    res.writeHead(upstream.status, {
-      'Content-Type':
-        upstream.headers.get('content-type') ||
-        'application/json; charset=utf-8',
-      'Cache-Control': 'no-store',
-    })
     if (req.method === 'HEAD') {
+      res.writeHead(upstream.status, {
+        'Content-Type':
+          upstream.headers.get('content-type') ||
+          'application/json; charset=utf-8',
+        'Cache-Control': 'no-store',
+      })
       res.end()
       return
     }
-    res.end(text)
+
+    let body = text
+    if (upstream.ok) {
+      try {
+        const payload = JSON.parse(text)
+        if (payload && payload.price && typeof payload.price === 'object') {
+          const { updateDailyStats } = await import('./price-stats.mjs')
+          payload.stats = await updateDailyStats(payload.price)
+          body = JSON.stringify(payload)
+        }
+      } catch (err) {
+        console.error('[tala-proxy] stats', err)
+      }
+    }
+
+    res.writeHead(upstream.status, {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Cache-Control': 'no-store',
+    })
+    res.end(body)
   } catch (err) {
     console.error('[tala-proxy]', err)
     sendJson(res, 502, { error: 'upstream unavailable' })
